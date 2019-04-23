@@ -1,4 +1,4 @@
-function crearBarchart(datos) {
+function createBarChart(datos) {
 	var barchart = {}
 	var sortOrder = false
 
@@ -8,13 +8,13 @@ function crearBarchart(datos) {
 
 	barchart.data = datos //los datos
 
-	barchart.xScale = d3.scale.ordinal() //escala x
+	barchart.xScale = d3.scaleOrdinal() //escala x
 	barchart.xScale.domain(
 		d3.range(barchart.data.length) //range devuelve una lista hasta data length, [0,1,2,3,4,5]
 	)
 	barchart.xScale.rangeRoundBands([0, barchart.w], 0.1)
 
-	barchart.yScale = d3.scale.linear() //escala linear, el dominio es [valor minimo, valor maximo]
+	barchart.yScale = d3.scaleLinear() //escala linear, el dominio es [valor minimo, valor maximo]
 	barchart.yScale.domain([0, d3.max(barchart.data)])
 	barchart.yScale.range([0, barchart.h])
 
@@ -116,4 +116,4 @@ var datos = [
 	30
 ]
 
-crearBarchart(datos)
+createBarChart(datos)
