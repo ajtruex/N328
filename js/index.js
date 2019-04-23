@@ -12,7 +12,11 @@ function createBarChart(datos) {
 	barchart.xScale.domain(
 		d3.range(barchart.data.length) //range devuelve una lista hasta data length, [0,1,2,3,4,5]
 	)
-	barchart.xScale.rangeRoundBands([0, barchart.w], 0.1)
+	barchart.xScale
+		.scaleBand()
+		.rangeRound([0, barchart.w])
+		.padding(0.1)
+	// barchart.xScale.rangeRoundBands([0, barchart.w], 0.1)
 
 	barchart.yScale = d3.scaleLinear() //escala linear, el dominio es [valor minimo, valor maximo]
 	barchart.yScale.domain([0, d3.max(barchart.data)])
